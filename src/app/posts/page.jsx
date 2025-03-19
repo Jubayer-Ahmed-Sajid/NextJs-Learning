@@ -2,7 +2,9 @@ import Link from 'next/link';
 import React from 'react';
 
 export const getPosts = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts',{
+        cache: 'force-cache'
+    });
     const data = await res.json();
     return data;
 };

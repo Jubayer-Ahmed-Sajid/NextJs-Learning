@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MealSearch from "./Components/MealSearch";
+import Image from "next/image";
 
 const Meals =async ({searchParams}) => {
     const query = await searchParams;
@@ -11,7 +12,9 @@ const Meals =async ({searchParams}) => {
 
         try {
             const response = await fetch(
-                `https://www.themealdb.com/api/json/v1/1/search.php?s=${query?.search}`
+                `https://www.themealdb.com/api/json/v1/1/search.php?s=${query?.search}`,{
+                    cache: "force-cache"
+                }
             );
             const data = await response.json();
            return data?.meals;
@@ -31,6 +34,7 @@ const meals =await mealsData()
                         key={meal?.idMeal}
                         className="bg-gray-800 text-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                     >
+                        <Image src={meal?.strMealThumb} width={641} height={641} alt={meal?.strMeal} />
                         <h2 className="text-2xl font-semibold text-cyan-300 mb-4">{meal.strMeal}</h2>
                         <p className="text-gray-300 mb-4">{meal.strCategory}</p>
                         <p className="text-sm text-gray-500 mb-4">Area: {meal.strArea}</p>
