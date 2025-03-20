@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import LoginButton from "./LoginButton";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ const Navbar = () => {
             { name: "About", href: "/about" },
             { name: "Posts", href: "/posts" },
             { name: "Meals", href: "/meal" },
+            { name: "Register", href: "/register" },
           ].map((link) => (
             <li key={link.href}>
               <Link
@@ -33,6 +35,7 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <LoginButton></LoginButton>
         </ul>
       </div>
     </nav>
