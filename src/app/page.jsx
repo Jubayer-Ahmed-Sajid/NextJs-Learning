@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import UserInfo from "./Components/UserInfo";
+import { authOptions } from "@/lib/authOptions";
 
 const getRecipe = async()=>{
   const data = await fetch('http://localhost:3000/api/items')
@@ -15,8 +15,7 @@ export default async function Home() {
   return (
     <div className="bg-gray-900 text-gray-100 min-h-screen">
       {/* Hero Section */}
-      <UserInfo></UserInfo>
-      <p> {JSON.stringify(session)}</p>
+    
       <section className="relative bg-cover bg-center h-[70vh] flex items-center justify-center">
         <div className="bg-black bg-opacity-50 p-8 rounded-lg text-center animate-fade-in">
           <h1 className="text-5xl font-bold text-cyan-400 mb-4">Welcome to Meal Haven</h1>

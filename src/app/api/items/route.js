@@ -1,7 +1,7 @@
-import dbConnect from "@/lib/dbConnect"
+import dbConnect, { collectionName } from "@/lib/dbConnect"
 
 export async function GET() {
-  const data = await dbConnect('reciepe').find({}).toArray()
+  const data = await dbConnect(collectionName.Recipe).find({}).toArray()
   return Response.json({ data })
 }
 export async function POST(req) {
